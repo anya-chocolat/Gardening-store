@@ -31,8 +31,23 @@ public class ProductController implements ProductControllerInterface {
         return productService.decreaseQuantity(quantityDTO);
     }
 
+    @DeleteMapping("/products/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteById(@PathVariable Long id){
+        productService.deleteById(id);
+    }
+
     @GetMapping("/products")
+    @ResponseStatus(HttpStatus.OK)
     public List<Product> getProductsByDepartment(@RequestParam Optional<Integer> departmentId){
         return productService.getProductsByDepartment(departmentId);
     }
+
+    @GetMapping("/products/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Product getProductById(@PathVariable long id) {
+        return productService.getProductById(id);
+    }
+
+
 }

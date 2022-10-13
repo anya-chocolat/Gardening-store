@@ -15,4 +15,8 @@ public interface ProductControllerInterface {
 
     List<Product> getProductsByDepartment(Optional<Integer> departmentId);
 
+    Product getProductById(long id);
+
+    void deleteById(Long id);
+
 }

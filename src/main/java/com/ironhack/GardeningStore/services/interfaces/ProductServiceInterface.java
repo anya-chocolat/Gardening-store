@@ -15,4 +15,8 @@ public interface ProductServiceInterface {
 
     List<Product> getProductsByDepartment(Optional<Integer> departmentId);
 
+    Product getProductById(long id);
+
+    void deleteById(Long id);
+
 }

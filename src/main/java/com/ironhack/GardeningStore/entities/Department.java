@@ -1,7 +1,6 @@
 package com.ironhack.GardeningStore.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
@@ -19,7 +18,8 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotEmpty
-    private String department;
+    @Column(name = "department")
+    private String name;
     @OneToMany(mappedBy = "department")
     @JsonIgnore
     private List<Product> products;
@@ -27,8 +27,8 @@ public class Department {
     public Department() {
     }
 
-    public Department(String department, List<Product> products) {
-        this.department = department;
+    public Department(String name, List<Product> products) {
+        this.name = name;
         this.products = products;
     }
 }

@@ -52,4 +52,17 @@ public class ProductService implements ProductServiceInterface {
             return productRepository.findByDepartment(departmentRepository.findById(departmentId.get()).get());
         }
     }
+
+    @Override
+    public Product getProductById(long id) {
+        return productRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No products found with this id!"));
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        if (!productRepository.existsById(id)) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No product found with this id");
+        productRepository.deleteById(id);
+    }
+
+
 }
